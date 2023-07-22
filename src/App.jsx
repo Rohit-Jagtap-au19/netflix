@@ -6,6 +6,7 @@ import {
   RedirectFunction,
   redirect,
 } from "react-router-dom";
+import { MovieProvider } from "./context/MovieContext";
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -16,6 +17,7 @@ function App() {
   const user = true;
   return (
     <Router>
+    <MovieProvider>
       <Routes>
         <Route exact path="/" element={user ? <Home /> : <Register />} />
         <Route path="/login" element={!user ? <Login /> : <Home />} />
@@ -29,6 +31,7 @@ function App() {
           </>
         )}
       </Routes>
+      </MovieProvider>
     </Router>
   );
 }
